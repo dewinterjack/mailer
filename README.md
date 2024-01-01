@@ -1,3 +1,5 @@
+This is for accessing your emails on an individual basis. I will look into updating this to support more than test users at some point.
+
 Get Gmail credentials here: https://console.developers.google.com/apis/dashboard
 
 Download your credential file and save it as `credentials.json`:
