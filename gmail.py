@@ -35,4 +35,21 @@ def authenticate():
           pickle.dump(creds, token)
   return build('gmail', 'v1', credentials=creds)
 
+def get_messages(service, maxResults=10):
+    # Call the Gmail API to list messages in the authorized user's inbox.
+    response = service.users().messages().list(userId='me', maxResults=maxResults).execute()
+    messages = response.get('messages', [])
+
+    for message in messages:
+            msg = service.users().messages().get(userId='me', id=message['id']).execute()
+
+            headers = msg['payload']['headers']
+            subject = next(header['value'] for header in headers if header['name'] == 'Subject')
+            sender = next(header['value'] for header in headers if header['name'] == 'From')
+
+    print(f"Subject: {subject}, Sender: {sender}\n")
+    return messages
+    
+
 service = authenticate()
+messages = get_messages(service)
