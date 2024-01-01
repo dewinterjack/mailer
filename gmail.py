@@ -34,3 +34,5 @@ def authenticate():
       with open('token.pickle', 'wb') as token:
           pickle.dump(creds, token)
   return build('gmail', 'v1', credentials=creds)
+
+service = authenticate()
