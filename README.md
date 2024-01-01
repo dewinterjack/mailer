@@ -1,0 +1,1 @@
+Get Gmail credentials here: https://console.developers.google.com/apis/dashboard
